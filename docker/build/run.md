@@ -38,7 +38,7 @@ qiujiahong/dolphinscheduler:1.3.5-SNAPSHOT all
 
 
 * 初始化数据库，使用脚本``dolphinscheduler_mysql.sql``创建mysql数据库，编码方式选择utf8
-
+  
 * 安装初始化zookeeper
 
 ```bash 
