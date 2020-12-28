@@ -71,6 +71,8 @@ Welcome to participate in contributing, please refer to the process of submittin
 
 ```bash
 ./mvnw clean install -Prelease
+# skip union test
+./mvnw clean install -Prelease -Dmaven.test.skip=true
 ```
 
 Artifact:
