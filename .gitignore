@@ -44,3 +44,4 @@ dolphinscheduler-dao/src/main/resources/dao/data_source.properties
 
 .mvn/wrapper/*.jar
 
+*dolphinscheduler-bin.tar.gz
