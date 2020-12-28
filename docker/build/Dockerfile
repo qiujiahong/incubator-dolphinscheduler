@@ -53,6 +53,7 @@ COPY ./conf/nginx/dolphinscheduler.conf /etc/nginx/conf.d
 
 #6. add configuration and modify permissions and set soft links
 COPY ./checkpoint.sh /root/checkpoint.sh
+COPY ./mysql-connector-java-5.1.48.jar /opt/dolphinscheduler/lib/mysql-connector-java.jar
 COPY ./startup-init-conf.sh /root/startup-init-conf.sh
 COPY ./startup.sh /root/startup.sh
 COPY ./conf/dolphinscheduler/*.tpl /opt/dolphinscheduler/conf/
