@@ -20,7 +20,7 @@ set -e
 
 
 export DOCKER_REPO="qiujiahong/dolphinscheduler"
-export VERSION="latest"
+# export VERSION="latest"
 
 echo "------ dolphinscheduler start - build -------"
 printenv
@@ -49,10 +49,10 @@ mvn -B clean compile package -Prelease -Dmaven.test.skip=true
 # mv dolphinscheduler-bin.tar.gz file to docker/build directory
 echo -e "mv $(pwd)/dolphinscheduler-dist/target/apache-dolphinscheduler-incubating-${VERSION}-dolphinscheduler-bin.tar.gz $(pwd)/docker/build/\n"
 rm -rf $(pwd)/docker/build/apache-dolphinscheduler-incubating-${VERSION}-dolphinscheduler-bin.tar.gz
-cp -rf $(pwd)/dolphinscheduler-dist/target/apache-dolphinscheduler-incubating-${VERSION}-dolphinscheduler-bin.tar.gz $(pwd)/docker/build/
+cp -rf $(pwd)/dolphinscheduler-dist/target/apache-dolphinscheduler-incubating-${VERSION}-*dolphinscheduler-bin.tar.gz $(pwd)/docker/build/apache-dolphinscheduler-incubating-${VERSION}-dolphinscheduler-bin.tar.gz 
 
 # docker build
 echo -e "docker build --build-arg VERSION=${VERSION} -t $DOCKER_REPO:${VERSION} $(pwd)/docker/build/\n"
-sudo docker build --build-arg VERSION=${VERSION} -t $DOCKER_REPO:${VERSION} $(pwd)/docker/build/
+docker build --build-arg VERSION=${VERSION} -t $DOCKER_REPO:${VERSION} $(pwd)/docker/build/
 
 echo "------ dolphinscheduler end   - build -------"

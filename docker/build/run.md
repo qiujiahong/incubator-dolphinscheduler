@@ -96,3 +96,10 @@ docker rm dolphinscheduler
 
 
 ```
+
+
+vi /opt/dolphinscheduler/conf/env/dolphinscheduler_env.sh
+
+```bash 
+export DATAX_HOME=/opt/datax
+```

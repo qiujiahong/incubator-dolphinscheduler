@@ -41,6 +41,9 @@ echo "Repo: $DOCKER_REPO"
 
 echo -e "Current Directory is $(pwd)\n"
 
+cp -rf docker/build/datax.tar.gz docker/build-base/
+cp -rf docker/build/mysql-connector-java-5.1.48.jar docker/build-base/
+
 # maven package(Project Directory)
 # echo -e "mvn -B clean compilee package -Prelease -Dmaven.test.skip=true"
 # mvn -B clean compile package -Prlease -Dmaven.test.skip=true
@@ -51,6 +54,10 @@ echo -e "Current Directory is $(pwd)\n"
 # docker build
 echo -e "docker build --build-arg VERSION=${VERSION} -t $DOCKER_REPO:${VERSION} $(pwd)/docker/build-base/\n"
 docker build --build-arg VERSION=${VERSION} -t $DOCKER_REPO:${VERSION} $(pwd)/docker/build-base
+
+
+rm -rf docker/build-base/datax.tar.gz 
+rm -rf docker/build-base/mysql-connector-java-5.1.48.jar
 
 
 now=$(date +%Y%m%d)

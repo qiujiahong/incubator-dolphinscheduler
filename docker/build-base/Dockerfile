@@ -40,14 +40,24 @@ ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
 ENV PATH $JAVA_HOME/bin:$PATH
 
 
-
 #3. add dolphinscheduler
 # ADD ./apache-dolphinscheduler-incubating-${VERSION}-dolphinscheduler-bin.tar.gz /opt/
 # RUN mv /opt/apache-dolphinscheduler-incubating-${VERSION}-dolphinscheduler-bin/ /opt/dolphinscheduler/
 # ENV DOLPHINSCHEDULER_HOME /opt/dolphinscheduler
 
 #4. install database, if use mysql as your backend database, the `mysql-client` package should be installed
-RUN apk add --update --no-cache postgresql postgresql-contrib
+RUN apk add --update --no-cache postgresql postgresql-contrib  
+
+COPY datax.tar.gz /opt/datax.tar.gz
+
+
+# http://datax-opensource.oss-cn-hangzhou.aliyuncs.com/datax.tar.gz  下载datax 到当前目录
+RUN cd /opt && \
+    tar -xzvf datax.tar.gz && \
+    rm -rf datax.tar.gz  
+
+
+COPY mysql-connector-java-5.1.48.jar /opt/datax/lib/mysql-connector-java.jar
 
 #5. modify nginx
 # RUN echo "daemon off;" >> /etc/nginx/nginx.conf && \

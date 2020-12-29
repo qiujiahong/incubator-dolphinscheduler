@@ -76,8 +76,17 @@ RUN chmod +x /root/checkpoint.sh && \
     mkdir -p /tmp/xls && \
     #7. remove apk index cache and disable coredup for sudo
     rm -rf /var/cache/apk/* && \
+    echo 'export DATAX_HOME=/opt/datax/bin/datax.py' >> /opt/dolphinscheduler/conf/env/dolphinscheduler_env.sh && \
     echo "Set disable_coredump false" >> /etc/sudo.conf
 
+# JVM参数修改
+# /opt/datax/conf/core.json 
+# "jvm": "-Xms1G -Xmx1G",
+
+# echo 'export DATAX_HOME="/opt/datax/bin/datax.py --jvm=\"-Xms4g -Xmx4g\""' >> /opt/dolphinscheduler/conf/env/dolphinscheduler_env.sh
+
+
+# python /data/datax/bin/datax.py --jvm="-Xms4g -Xmx4g"  /data/datax/job/t_work_calendar.json
 
 #8. expose port
 EXPOSE 2181 2888 3888 5432 5678 1234 12345 50051 8888
